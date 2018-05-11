@@ -1,3 +1,4 @@
-const users = require('./users');
+// const users = require('./users');
+const ping = require('./ping');
 
-module.exports = [].concat(users);
+module.exports = [].concat(ping);
