@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test sequelize db:migrate:undo:all && NODE_ENV=test sequelize db:migrate && lab",
-    "start": "node_modules/.bin/sequelize db:migrate"
+    "test-migrate": "NODE_ENV=test sequelize db:migrate:undo:all && NODE_ENV=test sequelize db:migrate",
+    "migrate": "node_modules/.bin/sequelize db:migrate:undo:all && node_modules/.bin/sequelize db:migrate",
+    "start": "node src/server.js",
+    "test": "node_modules/.bin/jest tests"
   },
   "author": "",
   "license": "ISC",
