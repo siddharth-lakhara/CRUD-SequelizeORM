@@ -1,4 +1,4 @@
-const Models = require('../models');
+const Models = require('../../models');
 
 // Create new user
 module.exports = [{
