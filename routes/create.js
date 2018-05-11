@@ -1,27 +1,40 @@
 const Models = require('../models');
 
-// Read all users from DB
+// Create new user
 module.exports = [{
-  method: 'GET',
+  method: 'POST',
   path: '/users',
-  handler: (request, response) => {
-    Models.User.findAll().then((result => result.map(row => ({
-      firstName: row.firstName,
-    }))))
-      .then((users) => {
-        response({
-          data: users,
-          statusCode: 200,
-        });
-      })
-      .catch((error) => {
-        response({
-          data: `Error in fetching data => ${error}`,
-          statusCode: 500,
-        });
+  handler: (req, reply) => {
+    const { userName } = req.payload;
+    Models.users.create({ firstName: userName })
+      .then(() => {
+        reply('User successfully created');
       });
   },
-}]/* ,
+}];
+
+// module.exports = [{
+//   method: 'POST',
+//   path: '/users',
+//   handler: (request, response) => {
+//     Models.User.findAll().then((result => result.map(row => ({
+//       firstName: row.firstName,
+//     }))))
+//       .then((users) => {
+//         response({
+//           data: users,
+//           statusCode: 200,
+//         });
+//       })
+//       .catch((error) => {
+//         response({
+//           data: `Error in fetching data => ${error}`,
+//           statusCode: 500,
+//         });
+//       });
+//   },
+// }];
+/* ,
 {
   method: 'POST',
   path: '/users/new',
