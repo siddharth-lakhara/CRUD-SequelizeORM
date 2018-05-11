@@ -2,5 +2,9 @@
 const ping = require('./ping');
 const create = require('./create');
 const read = require('./read');
+const update = require('./update');
 
-module.exports = [].concat(ping, create, read);
+module.exports = [].concat(
+  ping, create,
+  read, update,
+);
