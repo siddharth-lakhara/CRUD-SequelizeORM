@@ -75,24 +75,78 @@ beforeAll((done) => {
 //   });
 // });
 
-describe('test for update', () => {
-  test('Updates a user already in DB', (done) => {
+// describe('test for update', () => {
+//   test('Updates a user already in DB', (done) => {
+//     const options = {
+//       url: '/update',
+//       method: 'POST',
+//       payload: JSON.stringify({ oldName: 'user1', newName: 'userNew' }),
+//     };
+//     server.inject(options).then((response) => {
+//       expect(response.payload).toEqual('User succesfully updated');
+//       done();
+//     });
+//   });
+
+//   test('Returns error if user is not found', (done) => {
+//     const options = {
+//       url: '/update',
+//       method: 'POST',
+//       payload: JSON.stringify({ oldName: 'someUser', newName: 'userNew' }),
+//     };
+//     server.inject(options).then((response) => {
+//       expect(response.payload).toEqual('User not found');
+//       done();
+//     });
+//   });
+
+//   test('rejects request if old userName is not provided', (done) => {
+//     const options = {
+//       url: '/update',
+//       method: 'POST',
+//       payload: JSON.stringify({ newName: 'userNew' }),
+//     };
+//     server.inject(options).then((response) => {
+//       const payload = JSON.parse(response.payload);
+//       expect(payload.message).toEqual('oldName missing in request');
+//       expect(payload.statusCode).toBe(400);
+//       done();
+//     });
+//   });
+
+//   test('rejects request if new userName is not provided', (done) => {
+//     const options = {
+//       url: '/update',
+//       method: 'POST',
+//       payload: JSON.stringify({ oldName: 'userNew' }),
+//     };
+//     server.inject(options).then((response) => {
+//       const payload = JSON.parse(response.payload);
+//       expect(payload.message).toEqual('newName missing in request');
+//       expect(payload.statusCode).toBe(400);
+//       done();
+//     });
+//   });
+// });
+
+describe('test for delete operation', () => {
+  test('Delete a user present in DB', (done) => {
     const options = {
-      url: '/update',
+      url: '/delete',
       method: 'POST',
-      payload: JSON.stringify({ oldName: 'user1', newName: 'userNew' }),
+      payload: JSON.stringify({ userName: 'user2' }),
     };
     server.inject(options).then((response) => {
-      expect(response.payload).toEqual('User succesfully updated');
+      expect(response.payload).toEqual('User successfully deleted');
       done();
     });
   });
 
   test('Returns error if user is not found', (done) => {
     const options = {
-      url: '/update',
+      url: '/delete',
       method: 'POST',
-      payload: JSON.stringify({ oldName: 'someUser', newName: 'userNew' }),
+      payload: JSON.stringify({ userName: 'someUser' }),
     };
     server.inject(options).then((response) => {
       expect(response.payload).toEqual('User not found');
@@ -100,39 +154,17 @@ describe('test for update', () => {
     });
   });
 
-  test('rejects request if old userName is not provided', (done) => {
+  test('rejects a request if userName is not provided', (done) => {
     const options = {
-      url: '/update',
+      url: '/delete',
       method: 'POST',
-      payload: JSON.stringify({ newName: 'userNew' }),
+      payload: JSON.stringify({ }),
     };
     server.inject(options).then((response) => {
       const payload = JSON.parse(response.payload);
-      expect(payload.message).toEqual('oldName missing in request');
-      expect(payload.statusCode).toBe(400);
-      done();
-    });
-  });
-
-  test('rejects request if new userName is not provided', (done) => {
-    const options = {
-      url: '/update',
-      method: 'POST',
-      payload: JSON.stringify({ oldName: 'userNew' }),
-    };
-    server.inject(options).then((response) => {
-      const payload = JSON.parse(response.payload);
-      expect(payload.message).toEqual('newName missing in request');
+      expect(payload.message).toEqual('userName missing in request');
       expect(payload.statusCode).toBe(400);
       done();
     });
   });
 });
-
-// describe('test for delete operation', () => {
-//   test('Delets a user present in DB');
-
-//   test('Returns error if user is not found');
-
-//   test('rejects a request if userName is not provided');
-// });
