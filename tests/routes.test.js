@@ -46,9 +46,17 @@ describe('tests for create', () => {
   });
 });
 
-// describe('test for read', () => {
-//   test('Reads all users successfully');
-// });
+describe('test for read', () => {
+  test('Reads all users successfully', (done) => {
+    server.inject('/users').then((results) => {
+      const payload = JSON.parse(results.payload);
+      Object.keys(payload).map((elem) => {
+        expect(payload[elem].userName).toBeDefined();
+      });
+    });
+    done();
+  });
+});
 
 // describe('test for update', () => {
 //   test('Updates a user already in DB');
