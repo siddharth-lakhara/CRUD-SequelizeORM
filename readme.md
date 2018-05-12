@@ -5,8 +5,10 @@ Database: PostgreSQL
 Backend: HapiJS
 
 ## Usage
-`git clone https://github.com/siddharth-lakhara/CRUD-SequelizeORM.git
-npm install`
+```
+git clone https://github.com/siddharth-lakhara/CRUD-SequelizeORM.git`
+npm install
+```
 
 ### Scripts:
 npm start: Starts server in development mode
@@ -14,6 +16,7 @@ npm run test-start: Starts server in test mode
 npm run test: Perform testing using jest, generates a code coverage report
 
 ## Coverage
+```
 ------------|----------|----------|----------|----------|----------------|
 File        |  % Stmts | % Branch |  % Funcs |  % Lines |Uncovered Lines |
 ------------|----------|----------|----------|----------|----------------|
@@ -31,3 +34,4 @@ All files   |    77.46 |    47.37 |       60 |    77.46 |                |
   read.js   |       50 |      100 |        0 |       50 |           7,11 |
   update.js |     37.5 |        0 |        0 |     37.5 | 16,17,21,22,24 |
 ------------|----------|----------|----------|----------|----------------|
+```
