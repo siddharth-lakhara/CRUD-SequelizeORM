@@ -16,8 +16,9 @@ module.exports = [{
     const { userName } = req.payload;
     Models.users.findOrCreate({ where: { firstName: userName } })
       .spread((_, created) => {
-        if (created) { reply('User successfully created'); }
-        reply('User already exists');
+        if (created) {
+          reply('User successfully created');
+        } else { reply('User already exists'); }
       }).catch(() => {
         reply('User successfully created');
       });
